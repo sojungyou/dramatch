@@ -8,14 +8,17 @@ use App\Comment;
 use App\Drama;
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
-        $dramas = Drama::all();
-        return view('posts.index' , [
-            'posts' => $posts, 
-            'dramas' => $dramas
-        ]);
+      $cond_title = $request->cond_title;
+      $posts = null;
+      if ($cond_title != '') {
+        $posts= Drama::whereRaw('title LIKE ?', "%" . $cond_title . "%")->get();
+      } else {
+        $posts = Drama::all()->sortByDesc('updated_at');;
+      }
+  
+      return view('dramas.show', ['post' => $posts, 'cond_title' => $cond_title]);
     }
     public function create()
     {
@@ -30,7 +33,7 @@ class PostController extends Controller
         $posts->fill($form);
         $posts->save();
        
-        return redirect('dramas/'); 
+        return redirect()->route('dramas.show', ['drama' => $request->drama_id]);
     }
     public function show($post_id)
     {
@@ -54,7 +57,7 @@ class PostController extends Controller
         $form = $request->all();
         $post->fill($form)->save();
     
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('dramas.show', ['drama' => $post->drama_id]);
     }
     public function destroy($post_id)
     {
@@ -65,10 +68,19 @@ class PostController extends Controller
             $post->delete();
         });
     
-        return redirect('posts');
+        return redirect()->route('dramas.show', ['drama' => $post->drama_id]);
         ;
     }
-
+    // public function search(Request $request)
+    // {
+    
+    //     $post = post::where('title', 'like',"%{$request->search}%");
+    //     $dramas = Drama::all();
+    //     return view('dramas.show' , [
+    //         'drama' => $drama
+    //     ]);
+    
+    // }
 }
 
 

@@ -23,4 +23,13 @@ class DramasController extends Controller
             'drama' => $drama
         ]);
     }
+    public function search(Request $request)
+    {
+    
+        $drama = Drama::where('title', 'like',"%{$request->search}%");
+        return view('dramas.show' ,[
+            'drama' => $drama
+        ]);
+    
+    }
 }

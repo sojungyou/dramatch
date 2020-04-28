@@ -15,6 +15,7 @@ class Comment extends Model
         'body' => 'required',
         'post_id' => 'required',
     );
+
     public function post(){
         return $this->belongsTo('App\Post');
     }

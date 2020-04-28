@@ -22,7 +22,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
       <a class="navbar-brand" href="">Dramatch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
           @auth
-            <a class="nav-link" href="{{ url('/dramas') }}">ホーム
+            <a class="nav-link" href="{{ url('/drama') }}">ホーム
               <span class="sr-only">(current)</span>
             </a>
           <li class="nav-item">
@@ -52,7 +52,31 @@
     </div>
     @endif
   </nav>
-
+  <div class="container">
+    <br/>
+	<div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8 mt-5">
+        <form class="card card-sm" action="{{ route('posts.index') }}" method="POST" >
+            {{csrf_field() }}
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col-auto">
+                    <i class="fas fa-search h4 text-body"></i>
+                </div>
+                <!--end of col-->
+                <div class="col">
+                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="ドラマ検索" name="search">
+                </div>
+                <!--end of col-->
+                <div class="col-auto">
+                    <button class="btn btn-lg btn-success" type="submit">Search</button>
+                </div>
+                <!--end of col-->
+            </div>
+        </form>
+    </div>
+                            <!--end of col-->
+                        </div>
+</div>
   <!-- Page Content -->
   <div class="container">
 

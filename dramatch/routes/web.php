@@ -13,18 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//guest
+route::get('drama/intro', 'Guest\GuestController@intro');
+route::get('drama', 'Guest\DramaController@index');
 
 
-// Route::get('/posts', 'PostController@index');
+
 Route::resource('dramas/posts', 'PostController');
-
 Route::resource('comments','CommentsController', ['only' => ['store','edit','update','destory']]);
-
 route::resource('dramas','DramasController', ['only' => ['index','show']]);
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// Route::POST('/dramas/search', 'DramasController@search')->name('dramas.search');
+// Route::get('/posts', 'PostController@index');
+// Route::get('/', function () {
+//     return view('welcome');
+// });

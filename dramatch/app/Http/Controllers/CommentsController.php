@@ -13,11 +13,10 @@ class CommentsController extends Controller
         $this->validate($request, Comment::$rules);
         $comment = new Comment;
         $form = $request->all();
-        unset($form['_token']);
         $comment->fill($form);
         $comment->save();
         $post = Post::find($request->post_id);
-        return view('dramas.show');
+        return redirect()->route('dramas.show', ['drama' => $post->drama_id]);
     }
     
     
