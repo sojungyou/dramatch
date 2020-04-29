@@ -20,7 +20,7 @@ class DramasController extends Controller
     {
         $drama = Drama::find($id);
         return view('dramas.show' , [
-            'drama' => $drama
+            'drama' => $drama , 'id' => $id
         ]);
     }
     public function search(Request $request)

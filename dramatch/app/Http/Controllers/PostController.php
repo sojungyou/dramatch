@@ -20,9 +20,11 @@ class PostController extends Controller
   
       return view('dramas.show', ['post' => $posts, 'cond_title' => $cond_title]);
     }
-    public function create()
+    public function create(Request $request)
     {
-        return view('posts.create');
+        $id = $request->id;
+        var_dump($id);
+        return view('posts.create' , ['drama_id' => $id]);
     }
    
     public function store(Request $request)

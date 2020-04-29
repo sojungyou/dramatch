@@ -54,7 +54,7 @@
       <div class="mb-4">
 
       <!-- Blog Entries Column -->
-          <a href="{{ route('posts.create') }}" class="btn btn-primary">レビュー作成</a> 
+          <a href="{{ route('posts.create', ['id' => $id]) }}" class="btn btn-primary">レビュー作成</a> 
         </div>
         <!-- Blog Post -->
         <div class="card mb-8">

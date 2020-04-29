@@ -13,8 +13,8 @@
     <input type="text" class="form-control" id="title" name="title">
   </div>
   <div class="form-group mb-4">
-    <label for="title">dramaid</label></label>
-    <input type="text" class="form-control" id="drama_id" name="drama_id">
+    
+    <input type="hidden" class="form-control" id="drama_id" name="drama_id" value="{{ $drama_id }}">
   </div>
   <div class="form-group">
     <label for="body">本文</label>
