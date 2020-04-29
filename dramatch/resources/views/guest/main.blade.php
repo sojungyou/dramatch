@@ -16,9 +16,9 @@
           <img class="d-block w-100" src="https://i.gyazo.com/d541f82ec972feb8f504c0c952cc2efc.jpg" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>Example headline.</h1>
+            <h1>作品を探す</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            <p><a class="btn btn-lg btn-primary" href="{{ action('Guest\DramaController@index') }}" role="button">作品を探す</a></p>
           </div>
         </div>
       </div>
@@ -52,6 +52,9 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  
+
+
 
   <!-- Thumbnail一覧 -->
   <div class="album py-5 bg-light">

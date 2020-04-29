@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//guest
+//ゲスト
+
+// Dramatchの楽しみ方
 route::get('drama/intro', 'Guest\GuestController@intro');
-route::get('drama', 'Guest\DramaController@index');
+// メイン画面
+route::get('drama', 'Guest\DramaController@add');
+// 検索機能
+route::get('drama/index', 'Guest\DramaController@index');
 
 
 

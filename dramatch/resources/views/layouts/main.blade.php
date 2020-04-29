@@ -2,14 +2,22 @@
 <html lang="ja">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+  <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <!-- Styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<link href="{{ asset('css/album.css') }}" rel="stylesheet">
-<link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
 </head>
 
 
@@ -17,10 +25,12 @@
 <title>Dramatch|ドラマレビューサイト</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ action('Guest\DramaController@index') }}">Dramatch</a>
+      <a class="navbar-brand" href="{{ action('Guest\DramaController@add') }}">Dramatch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+      
       <div class="collapse navbar-collapse" id="navbarResponsive">
       @if (Route::has('login'))
         <ul class="navbar-nav ml-auto">
@@ -29,6 +39,25 @@
             <a class="nav-link" href="{{ url('/drama') }}">ホーム
               <span class="sr-only">(current)</span>
             </a>
+            <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  
+                  {{ __('Logout') }}
+              </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+              </form>
+            </div>
+            </li>
+
+
           <li class="nav-item">
           @else
             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
@@ -48,18 +77,11 @@
     </div>
     @endif
   </nav>
-  
-  
-  <!-- 検索機能 -->
-  <div class="col">
-  <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="ドラマ検索" name="search">
-</div>
-<!--end of col-->
-<div class="col-auto">
-  <button class="btn btn-lg btn-success" type="submit">Search</button>
-</div>
 </header>
         
+
+
+
 
 
 <div>

@@ -10,20 +10,11 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-      $cond_title = $request->cond_title;
-      $posts = null;
-      if ($cond_title != '') {
-        $posts= Drama::whereRaw('title LIKE ?', "%" . $cond_title . "%")->get();
-      } else {
-        $posts = Drama::all()->sortByDesc('updated_at');;
-      }
   
-      return view('dramas.show', ['post' => $posts, 'cond_title' => $cond_title]);
     }
     public function create(Request $request)
     {
         $id = $request->id;
-        var_dump($id);
         return view('posts.create' , ['drama_id' => $id]);
     }
    
