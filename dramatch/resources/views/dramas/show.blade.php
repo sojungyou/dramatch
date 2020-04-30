@@ -62,6 +62,18 @@
             <h2 class="card-title">{{ $drama->title }}</h2>
             <img class="card-img-top" src="{{ $drama->image_path }}" alt="">
             <p class="card-text">{{ $drama->story }}</p>
+            
+
+              @if (Auth::user()->is_favorite($drama->id))
+
+              <a class="favorite" href="{{ action('FavoriteController@destroy') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
+
+              @else
+              <a class="favorite" href="{{ action('FavoriteController@store') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
+
+              @endif
+
+
           </div>
         </div>
 

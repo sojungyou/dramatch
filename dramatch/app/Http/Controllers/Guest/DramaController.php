@@ -20,12 +20,10 @@ class DramaController extends Controller
     public function index(Request $request)
     {
         $cond_title = $request->cond_title;
-        if ($cond_title != ' ')
-        {
+        if ($cond_title != ' '){
             $dramas = Drama::where('title', $cond_title)->get();
         }
-        else 
-        {
+        else {
             $dramas = Drama::all();
         }
         return view('guest.index', ['dramas' => $dramas,'cond_title' => $cond_title]);

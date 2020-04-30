@@ -24,6 +24,15 @@ route::get('drama', 'Guest\DramaController@add');
 route::get('drama/index', 'Guest\DramaController@index');
 
 
+//いいね機能
+
+Route::group(['middleware'=>'auth'],function(){
+  
+    Route::get('favorite','FavoriteController@store')->name('favorites.favorite');
+    Route::get('unfavorite','FavoriteController@destroy')->name('favorites.unfavorite');
+});
+
+
 
 Route::resource('dramas/posts', 'PostController');
 Route::resource('comments','CommentsController', ['only' => ['store','edit','update','destory']]);
@@ -33,7 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-// Route::POST('/dramas/search', 'DramasController@search')->name('dramas.search');
+
 // Route::get('/posts', 'PostController@index');
 // Route::get('/', function () {
 //     return view('welcome');
