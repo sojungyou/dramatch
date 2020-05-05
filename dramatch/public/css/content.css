@@ -4,7 +4,7 @@
 }
 
 .p-content-detail_inner {
-    width: 1500px;
+
     margin: 0 auto;
 }
 
@@ -12,7 +12,6 @@
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    padding-bottom: 40px;
 }
 .p-content-detail_left {
     width: 260px;
@@ -20,6 +19,8 @@
 .c-content_jacket {
     display: inline-block;
     position: relative;
+    width:340px;
+    height:236px;
 }
 .p-content-detail_main {
     margin-left: 40px;
@@ -38,6 +39,14 @@
   font-size: 1.2rem;
 }
 .p-content-detail_other-info-title{
+  margin:  0;             /* デフォルトCSS打ち消し */
+  font-size:  24px;       /* 文字サイズ指定 */
+  position:  relative;    /* 位置調整 */
+  font-weight:  normal;   /* 文字の太さ調整 */
+  background: linear-gradient(to right, rgb(48, 224, 192) 0%,rgba(96,155,208,0.7) 30%,rgba(125,185,232,0) 100%);/* グラデーション指定 */
+  padding:  10px;         /* 余白指定 */
+  margin-bottom: 15px;    /* 周りの余白指定 */
+  border-radius:  2px;    /* 角丸指定 */
   display: inline-block;
   font-weight: 600;
 }
@@ -45,6 +54,15 @@
   margin-top: 3px;
 }
 .p-content-detail_genre-title{
+  display: inline-block;
+  font-weight: 600;
+  margin:  0;             /* デフォルトCSS打ち消し */
+  font-size:  24px;       /* 文字サイズ指定 */
+  position:  relative;    /* 位置調整 */
+  background: linear-gradient(to right, rgb(48, 224, 192) 0%,rgba(96,155,208,0.7) 30%,rgba(125,185,232,0) 100%);/* グラデーション指定 */
+  padding:  10px;         /* 余白指定 */
+  margin-bottom: 15px;    /* 周りの余白指定 */
+  border-radius:  2px;    /* 角丸指定 */
   display: inline-block;
   font-weight: 600;
 }
@@ -56,6 +74,13 @@
   margin-top: 8px;
   margin-bottom: 2px;
   font-weight: 600;
+  margin:  0;             /* デフォルトCSS打ち消し */
+  font-size:  24px;       /* 文字サイズ指定 */
+  position:  relative;    /* 位置調整 */
+  background: linear-gradient(to right, rgb(48, 224, 192) 0%,rgba(96,155,208,0.7) 30%,rgba(125,185,232,0) 100%);/* グラデーション指定 */
+  padding:  10px;         /* 余白指定 */
+  margin-bottom: 15px;    /* 周りの余白指定 */
+  border-radius:  2px;    /* 角丸指定 */
 }
 .p-content-detail_synopsis-desc{
   display: block;
@@ -65,4 +90,32 @@
   margin-bottom: 6px;
   font-size: 1.4rem;
   font-weight: 600;
+  margin:  0;             /* デフォルトCSS打ち消し */
+  font-size:  24px;       /* 文字サイズ指定 */
+  position:  relative;    /* 位置調整 */
+  font-weight:  normal;   /* 文字の太さ調整 */
+  background: linear-gradient(to right, rgb(48, 224, 192) 0%,rgba(96,155,208,0.7) 30%,rgba(125,185,232,0) 100%);/* グラデーション指定 */
+  padding:  10px;         /* 余白指定 */
+  margin-bottom: 15px;    /* 周りの余白指定 */
+  border-radius:  2px;    /* 角丸指定 */
+}
+.p-content-detail_drana-video-term{
+  margin-top: 8px;
+  margin-bottom: 6px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin:  0;             /* デフォルトCSS打ち消し */
+  font-size:  24px;       /* 文字サイズ指定 */
+  position:  relative;    /* 位置調整 */
+  font-weight:  normal;   /* 文字の太さ調整 */
+  background: linear-gradient(to right, rgb(48, 224, 192) 0%,rgba(96,155,208,0.7) 30%,rgba(125,185,232,0) 100%);/* グラデーション指定 */
+  padding:  10px;         /* 余白指定 */
+  margin-bottom: 15px;    /* 周りの余白指定 */
+  border-radius:  2px;    /* 角丸指定 */
+}
+.justify-content-center{
+  margin-top:30px
+}
+.btn{
+  
 }

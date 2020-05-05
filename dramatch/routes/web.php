@@ -52,8 +52,10 @@ Route::group(['prefix' => 'member','middleware'=>'auth'],function(){
 
   route::get('dramas/{id}', 'Guest\DramasController@show');
   
-  route::get('/logout', 'Guest\GuestController@logout');
+  
   Auth::routes();
+  
+  Route::get('/', 'Guest\DramasController@add');
 
   Route::get('/home', 'HomeController@index')->name('home');
   

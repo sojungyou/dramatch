@@ -15,7 +15,7 @@
           <img class="d-block w-100" src="https://i.gyazo.com/d541f82ec972feb8f504c0c952cc2efc.jpg" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>作品</h1>
+            <h1>会員専用画面</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             <p><a class="btn btn-lg btn-primary" href="{{ action('Member\DramasController@index') }}" role="button">作品を探す</a></p>
           </div>

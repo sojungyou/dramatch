@@ -12,10 +12,6 @@ class GuestController extends Controller
     {
         return view('guest.intro');
     } 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect("/dramas");
-    } 
+    
 }
 

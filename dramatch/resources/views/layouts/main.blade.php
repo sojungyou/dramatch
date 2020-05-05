@@ -25,7 +25,7 @@
 <title>Dramatch|ドラマレビューサイト</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ action('Guest\DramasController@add') }}">Dramatch</a>
+      <a class="navbar-brand" href="#">Dramatch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,24 +35,29 @@
       @if (Route::has('login'))
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
+          
+          <!-- ログインいている時 -->
           @auth
-            <a class="nav-link" href="{{ url('member/dramas') }}">ホーム
+            <li><a class="nav-link" href="{{ url('member/dramas') }}">ホーム</li>
               <span class="sr-only">(current)</span>
             </a>
+            <li><a class="nav-link" href="{{ action('Member\DramasController@index') }}">作品一覧</li>
+            
             <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ action('Guest\GuestController@logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> ログアウト </a>
-              <form id="logout-form"  action="{{  action('Guest\GuestController@logout') }}" style="display: none;">
-              @csrf
-              </form>
-            </div>
+              </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> ログアウト </a>
+                  <form id="logout-form"  action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                  </form>
+                </div>
             </li>
 
 
           <li class="nav-item">
+          <!-- ログインしていない時 -->
           @else
             <a class="nav-link" href="{{ route('login') }}">ログイン</a>
           </li>
@@ -82,15 +87,7 @@
     @yield('content')
     </div>
 
-<footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Back to top</a>
-    </p>
-    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    
-  </div>
-</footer>
+
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

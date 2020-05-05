@@ -17,7 +17,12 @@
     </div>
     {{ csrf_field() }}
       </form>
-</div>
+    
+
+
+
+
+ドラマ一覧
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
@@ -37,4 +42,19 @@
     </div>
 </div>
 
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="{{ url('/dramas') }}">Back to top</a>
+    </p>
+    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    
+  </div>
+</footer>
+
+
+
+
 @endsection
+
+

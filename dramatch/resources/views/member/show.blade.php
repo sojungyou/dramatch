@@ -10,55 +10,75 @@
   <meta name="description" content="">
   <meta name="author" content="">
  
-  <title>{{$drama->title}} - ドラマレビューサイト</title>
+  <title>{{ $drama->title }} - ドラマレビューサイト</title>
   
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Custom styles for this template -->
    <link href="{{ asset('vendor/css/blog-home.css') }}" rel="stylesheet ">
+   <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 </head>
-
-
-  <!-- Page Content -->
-  <div class="container ml-1">
-
-    <div class="row">
-      <div class="col-md-8 mt-5">
-        <h1 class="my-4">
-          <small></small>
-        </h1>
-      <div class="mb-4">
-
-      <!-- Blog Entries Column -->
-      
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <div class="p-content-detail_head">
+    <div class="p-content-detail_inner">
+    <div class="p-content-detail_body">
+      <div class="p-content-detail_left">
+      <img class="c-content_jacket" src="{{ $drama->image_path }}" alt="">
       <a href="{{ action('Member\PostController@create', ['id' => $id]) }}" class="btn btn-primary">レビュー作成</a> 
-      
+      @if (Auth::user()->is_favorite($drama->id))
 
-     
-        </div>
-        <!-- Blog Post -->
-        <div class="card mb-8">
-          <div class="card-body">
-            <h2 class="card-title">{{ $drama->title }}</h2>
-            <img class="card-img-top" src="{{ $drama->image_path }}" alt="">
-            <p class="card-text">{{ $drama->story }}</p>
-            
+<a class="favorite" href="{{ action('FavoriteController@destroy') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
 
-              @if (Auth::user()->is_favorite($drama->id))
+@else
+<a class="favorite" href="{{ action('FavoriteController@store') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
 
-              <a class="favorite" href="{{ action('FavoriteController@destroy') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
+@endif
+  
+      </div>
+    </div>
 
-              @else
-              <a class="favorite" href="{{ action('FavoriteController@store') }}?id={{ $drama->id }}"><i class="fas fa-thumbs-up"></i> {{ $drama->favorite_users->count() }}</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm">
+    <div class="p-content-detail_main">
+      <div class="p-content-detail_title">
+        <h2>{{ $drama->title }}</h2>
+          <p class="p-content-detail_original">{{ $drama->subtitle }}</p>
+      </div>
+      <div class="p-content-detail_other-info">
+        <h4 class="p-content-detail_other-info-title">公開日</h4>
+        <p>{{ $drama->releaseDate }}</p>
+        <h4 class="p-content-detail_other-info-title">制作国</h4>
+        <p>{{ $drama->country }}</p>
+      </div>
 
-              @endif
+      <div class="p-content-detail_genre">
+        <h4 class="p-content-detail_genre-title">ジャンル</h4>
+        <p>{{ $drama->genre }}</p>
+      </div>
+      <div class="p-content-detail_synopsis">
+        <h4 class="p-content-detail_synopsis-term">あらすじ</h4>
+        <p class="p-content-detail_synopsis-desc">{{ $drama->story }}</p>
+      </div>
+      <div class="p-content-detail_people-cast">
+      <h4 class="p-content-detail_people-list-term">出演者</h4> <p>{{ $drama->cast }}</p>
+      </div>
+      <div class="p-content-detail_drama-video">
+      <h4 class="p-content-detail_drana-video-term">予告編</h4> <iframe width="560" height="315" src="{{ $drama->video_path }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    </div>
+   
 
+</div>
+</div>
 
-          </div>
-        </div>
-
-        <!-- Blog Post -->
-        <div class="container mt-4">
+    <div class="col">
+    
+    <div class="container mt-4">
         @foreach ($drama->posts as $post )  
             <div class="card mb-4">
                 <div class="card-header">
@@ -96,7 +116,7 @@
                     </p>
                   </div>
                   @endforeach 
-                 
+                
             </section>
                     
             
@@ -111,99 +131,20 @@
                             戻る</a> -->
                   </div>
                 
-   
+  
             
         @endforeach
         
 
-
-
-
-
-        <!-- Pagination -->
-
-      </div>
-      
-      <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
-
-        <!-- Search Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Search</h5>
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Categories Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                  <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Side Widget -->
-        <div class="card my-4">
-          <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-          </div>
-        </div>
-
-      </div>
-
     </div>
-    <!-- /.row -->
-
   </div>
-  <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-</>
+
 
 </html>
 
