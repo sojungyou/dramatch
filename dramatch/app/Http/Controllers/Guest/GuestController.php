@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\support\Facade\Auth;
 
 class GuestController extends Controller
 {
@@ -11,12 +12,10 @@ class GuestController extends Controller
     {
         return view('guest.intro');
     } 
-    public function register()
+    public function logout()
     {
-        return view('guest.login');
-    }
-    public function login()
-    {
-        return view('guest.register');
-    }
+        Auth::logout();
+        return redirect("/dramas");
+    } 
 }
+

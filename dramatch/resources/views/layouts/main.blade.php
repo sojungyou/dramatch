@@ -18,7 +18,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-
 </head>
 
 
@@ -26,7 +25,7 @@
 <title>Dramatch|ドラマレビューサイト</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
-      <a class="navbar-brand" href="{{ action('Guest\DramaController@add') }}">Dramatch</a>
+      <a class="navbar-brand" href="{{ action('Guest\DramasController@add') }}">Dramatch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,22 +36,16 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
           @auth
-            <a class="nav-link" href="{{ url('/drama') }}">ホーム
+            <a class="nav-link" href="{{ url('member/dramas') }}">ホーム
               <span class="sr-only">(current)</span>
             </a>
             <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
             </a>
-
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                  
-                  {{ __('Logout') }}
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <a class="dropdown-item" href="{{ action('Guest\GuestController@logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> ログアウト </a>
+              <form id="logout-form"  action="{{  action('Guest\GuestController@logout') }}" style="display: none;">
               @csrf
               </form>
             </div>

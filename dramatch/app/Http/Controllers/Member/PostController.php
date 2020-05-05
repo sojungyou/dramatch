@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\support\Facade\Auth;
 use App\Post;
 use App\Comment;
 use App\Drama;
@@ -15,7 +17,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $id = $request->id;
-        return view('posts.create' , ['drama_id' => $id]);
+        return view('member.posts.create' , ['drama_id' => $id]);
     }
    
     public function store(Request $request)
@@ -25,44 +27,39 @@ class PostController extends Controller
         $form = $request->all();
         $posts->fill($form);
         $posts->save();
-       
-        return redirect()->route('dramas.show', ['drama' => $request->drama_id]);
+
+        return redirect()->route('member.show', ['id' => $request->drama_id]);
     }
-    public function show($post_id)
+
+    public function edit($id)
     {
-        $posts = Post::find($post_id);
-        return view('posts.show' , [
-            'posts' => $posts
-        ]);
-    }
-    public function edit($post_id)
-    {
-        $post = Post::find($post_id);
+        $post = Post::find($id);
     
-        return view('posts.edit', [
+        return view('member.posts.edit', [
             'post' => $post,
         ]);
     }
     
-    public function update($post_id, Request $request)
+    public function update(Request $request)
     {
-        $post = Post::find($post_id);
+        
+        $post = Post::find($request->id);
         $form = $request->all();
         $post->fill($form)->save();
     
-        return redirect()->route('dramas.show', ['drama' => $post->drama_id]);
+        return redirect()->route('member.show', ['id' => $post->drama_id]);
     }
-    public function destroy($post_id)
+    public function destroy(Request $request)
     {
-        $post = Post::findOrFail($post_id);
-    
+        
+        $post = Post::findOrFail($request->id);
+        $drama_id = $post->drama_id;
         \DB::transaction(function () use ($post) {
             $post->comments()->delete();
             $post->delete();
         });
-    
-        return redirect()->route('dramas.show', ['drama' => $post->drama_id]);
-        ;
+        return redirect()->route('member.show', ['id' => $drama_id]);
+        
     }
     // public function search(Request $request)
     // {

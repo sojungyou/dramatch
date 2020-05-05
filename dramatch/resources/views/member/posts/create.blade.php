@@ -4,7 +4,7 @@
   <div class="container mt-5">
     <div class="border p-4">
       <h1 class="h5 mb-4">レビュー</h1>
-      <form method="POST" action="{{ route('posts.store') }}">
+      <form method="GET" action="{{ action('Member\PostController@store') }}">
   {{ csrf_field() }}
 
   

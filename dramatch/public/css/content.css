@@ -1,0 +1,68 @@
+.p-content-detail_head {
+    border-bottom: 2px solid #eee;
+    background-color: #fff;
+}
+
+.p-content-detail_inner {
+    width: 1500px;
+    margin: 0 auto;
+}
+
+.p-content-detail_body {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+.p-content-detail_left {
+    width: 260px;
+}
+.c-content_jacket {
+    display: inline-block;
+    position: relative;
+}
+.p-content-detail_main {
+    margin-left: 40px;
+    width: 700px;
+}
+.p-content-detail_title {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+.p-content-detail_original {
+    color: #7e7e7e;
+    font-size: 1.2rem;
+}
+.p-content-detail_other-info{
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+.p-content-detail_other-info-title{
+  display: inline-block;
+  font-weight: 600;
+}
+.p-content-detail_genre{
+  margin-top: 3px;
+}
+.p-content-detail_genre-title{
+  display: inline-block;
+  font-weight: 600;
+}
+.p-content-detail_synopsis{
+  margin-top: 20px;
+  font-size: 1.4rem;
+}
+.p-content-detail_synopsis-term{
+  margin-top: 8px;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.p-content-detail_synopsis-desc{
+  display: block;
+}
+.p-content-detail_people-list-term{
+  margin-top: 8px;
+  margin-bottom: 6px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}

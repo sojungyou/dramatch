@@ -16,8 +16,14 @@ class CreateDramasTable extends Migration
         Schema::create('dramas', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('subtitle')->nullable();
             $table->string('image_path')->nullable();
-            $table->mediumText('story');
+            $table->mediumText('story')->nullable();
+            $table->string('genre')->nullable();
+            $table->string('releaseDate')->nullable();
+            $table->string('country')->nullable();
+            $table->string('cast')->nullable();
+            $table->string('video_path')->nullable();
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@
   </div>
 
     <div class="col">
-      <form action="{{ action('Guest\DramasController@index') }}" method="get">
+      <form action="{{ action('Member\DramasController@index') }}" method="get">
         <input class="form-control" type="text" placeholder="タイトル検索" name="cond_title" value="{{ $cond_title }}">
   </div>
     <div class="col-auto">
@@ -18,7 +18,8 @@
     {{ csrf_field() }}
       </form>
 </div>
-  <div class="album py-5 bg-light">
+  
+<div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
         @foreach($dramas as $drama)

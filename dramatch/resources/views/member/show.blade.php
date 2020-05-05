@@ -18,31 +18,7 @@
    <link href="{{ asset('vendor/css/blog-home.css') }}" rel="stylesheet ">
 </head>
 
-<div class="container">
-    <br/>
-	<div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8 mt-5">
-        <form class="card card-sm" action="{{ route('posts.index') }}" method="POST" >
-            {{csrf_field() }}
-            <div class="card-body row no-gutters align-items-center">
-                <div class="col-auto">
-                    <i class="fas fa-search h4 text-body"></i>
-                </div>
-                <!--end of col-->
-                <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="ドラマ検索" name="search">
-                </div>
-                <!--end of col-->
-                <div class="col-auto">
-                    <button class="btn btn-lg btn-success" type="submit">Search</button>
-                </div>
-                <!--end of col-->
-            </div>
-        </form>
-    </div>
-                            <!--end of col-->
-                        </div>
-</div>
+
   <!-- Page Content -->
   <div class="container ml-1">
 
@@ -54,7 +30,11 @@
       <div class="mb-4">
 
       <!-- Blog Entries Column -->
-          <a href="{{ route('posts.create', ['id' => $id]) }}" class="btn btn-primary">レビュー作成</a> 
+      
+      <a href="{{ action('Member\PostController@create', ['id' => $id]) }}" class="btn btn-primary">レビュー作成</a> 
+      
+
+     
         </div>
         <!-- Blog Post -->
         <div class="card mb-8">
@@ -91,13 +71,14 @@
                     </p>
                 </div>
                 <div class="mb-4 text-right">
-                  <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post]) }}">
+                  <a class="btn btn-primary" href="{{ action('Member\PostController@edit',['id' => $post->id]) }}">
                       編集する
                     </a>
-                <form style="display: inline-block;" method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
+                <form style="display: inline-block;" method="DELETE" action="{{ action('Member\PostController@destroy', ['post' => $post]) }}">
                   @method('DELETE')
                   @csrf
-                    <button class="btn btn-danger">削除する</button>
+                    <input type= "hidden" value="{{ $post->id }}" name="id">
+                    <button class="btn btn-danger" type="submit">削除する</button>
                 </form>
                 <div class="card-footer">
                       <span class="mr-2">
@@ -120,7 +101,7 @@
                     
             
                 <div class="form-group">
-                  <form method="POST" action="{{ route('comments.store') }}">
+                  <form method="GET" action="{{ action('Member\CommentsController@store') }}">
                     {{ csrf_field() }}
                       <input name="post_id" type="hidden" value="{{ $post -> id }}">
                         <textarea id="body" class="form-control" rows="1" name="body"> </textarea>

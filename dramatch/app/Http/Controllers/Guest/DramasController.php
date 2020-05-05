@@ -8,7 +8,7 @@ use App\Drama;
 use App\Post;
 
 
-class DramaController extends Controller
+class DramasController extends Controller
 {
     public function add()
     {
@@ -28,5 +28,14 @@ class DramaController extends Controller
         }
         return view('guest.index', ['dramas' => $dramas,'cond_title' => $cond_title]);
     }
+    public function show($id)
+    {
+        $drama = Drama::find($id);
+        return view('guest.show' , [
+            'drama' => $drama , 'id' => $id
+        ]);
+    }
     
 }
+
+// 'title', 'like',"%{$request->search}%");
