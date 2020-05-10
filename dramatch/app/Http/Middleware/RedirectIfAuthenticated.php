@@ -17,11 +17,19 @@ class RedirectIfAuthenticated
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
-    {
+    {   
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME);  
+            
         }
-
-        return $next($request);
+        
+    return $next($request);
     }
 }
+
+
+
+// $id = session('drama_id');
+                
+// if ($id) {
+//     return redirect()->route('member.show', ['id' => $id]);

@@ -25,6 +25,7 @@
 }
 
 .album {
+  
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -38,6 +39,7 @@
 }
 
 .col-md-4{
+  
   display: flex;
   flex-wrap: wrap;
 }

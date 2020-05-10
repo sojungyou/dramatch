@@ -10,7 +10,8 @@ class Post extends Model
         'user_id', 
         'title',
         'body',
-        'drama_id'
+        'drama_id',
+        'spoilers'
     ];
     public static $rules = array (
         'title' => 'required',
@@ -21,5 +22,8 @@ class Post extends Model
     }
     public function drama(){
         return $this->belongsTo('App\Drama');
+    }
+    public function User(){
+        return $this->belongsTo('App\User');
     }
 }

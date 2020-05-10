@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
+<title>編集画面</title>
+<div class="container col-5">
     <div class='border p-4'>
       <h1>投稿の編集</h1>
       <form method="POST" action="{{ action('Member\PostController@update',['post' => $post]) }}">
@@ -18,8 +19,14 @@
     <textarea id="body" class="form-control" rows="5" name="body">{{ $post->body }}</textarea>
   </div>
   <input type= "hidden" value="{{ $post->id }}" name="id">
-  <button type="submit" class="btn btn-info"> 更新する </button>
+  
+  <div class="edit-button">
+
+    <button type="submit" class="btn btn-danger m-0 " > 更新する </button>
+  </div>
   </form>
   
+</div>
+</div>
 
   @endsection

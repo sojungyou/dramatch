@@ -1,0 +1,16 @@
+.row-top {
+  text-align: center;
+}
+.footer {
+  color: azure;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  font-size: 15px;
+  background-color: #b33939;
+  margin-top: 100px;
+  
+}
+.footer p {
+  padding-top: 25px;
+}

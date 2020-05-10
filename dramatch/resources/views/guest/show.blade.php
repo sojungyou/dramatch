@@ -48,8 +48,8 @@
       </div>
     </div>
     <div class="justify-content-center">
-    <a href="{{ url('member/dramas') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">レビューを見る</a>
-    <a href="{{ url('/dramas') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">戻る</a>
+    <a href="{{ url('/login') }}" class="btn-outline-danger btn-lg active" role="button" aria-pressed="true">レビューを見る</a>
+    <a href="{{ url('/dramas') }}" class="btn-outline-danger btn-lg active" role="button" aria-pressed="true">戻る</a>
       
     </div>
   </div>

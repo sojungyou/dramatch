@@ -10,21 +10,21 @@ use App\Comment;
 use App\Drama;
 class PostController extends Controller
 {
-    public function index(Request $request)
-    {
-  
-    }
+    
     public function create(Request $request)
     {
+    
         $id = $request->id;
         return view('member.posts.create' , ['drama_id' => $id]);
     }
-   
+    
     public function store(Request $request)
     {
         $this->validate($request, Post::$rules);
         $posts = new Post;
         $form = $request->all();
+        $post = $request->spoilers;
+        unset($form['_token']);
         $posts->fill($form);
         $posts->save();
 

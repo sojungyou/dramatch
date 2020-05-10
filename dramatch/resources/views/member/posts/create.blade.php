@@ -1,11 +1,21 @@
 @extends('layouts.main')
-
 @section('content')
-  <div class="container mt-5">
+
+
+
+<title>投稿画面</title>
+
+
+  <div class="container col-5 mt-5">
+   
     <div class="border p-4">
-      <h1 class="h5 mb-4">レビュー</h1>
+      <div class="review_review">
+        <h4 class="review mb-4">レビュー</h4>
+      </div>
+      
       <form method="GET" action="{{ action('Member\PostController@store') }}">
   {{ csrf_field() }}
+
 
   
   <div class="form-group mb-4">
@@ -18,19 +28,37 @@
   </div>
   <div class="form-group">
     <label for="body">本文</label>
-    <textarea id="body" class="form-control" rows="5"name="body">       </textarea>
+    <textarea id="body" class="form-control" rows="5"name="body"></textarea>
   </div>
   
-  <div class="form-group form-check">
+  <div class="form-group mb-4">
   
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">ネタバレ</label>
+    <div class="checkbox">
+    <p>レビューがドラマの内容のネタバレにあたる場合はチェックしてください。</p>
+    <label>
+      <input type="checkbox" name="spoilers" value ="1" class="checkbox-input">
+      <span class="checkbox-parts">ネタバレ！</span>
+      </label> </br>
+      <label>
+        <input type="checkbox" name="spoilers" value ="2" class="checkbox-input">
+        <span class="checkbox-parts">ネタバレなし</span>
+
+      </label>
+    
+
   </div>
-  
-  <input type ="hidden" name="user_id" value="{{ Auth::id() }}">
-<!--   
-  <input type ="hidden" name="drama_id" value=" ">  -->
-  <button type="submit" class="btn btn-primary">投稿</button>
+</div>
+
+<input type ="hidden" name="user_id" value="{{ Auth::id() }}">
+
+
+
+  <button type="submit" class="btn_3 btn-danger">投稿する</button>
+</div>
+
 </form>
 </div>
+</div>
+</div>
+
 @endsection

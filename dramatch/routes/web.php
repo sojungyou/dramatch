@@ -47,6 +47,11 @@ Route::group(['prefix' => 'member','middleware'=>'auth'],function(){
   route::get('dramas/intro', 'Guest\GuestController@intro');
   // メイン画面
   route::get('dramas', 'Guest\DramasController@add');
+  // メイン画面
+  route::get('dramas/en', 'Guest\DramasController@adden');
+  route::get('dramas/kr', 'Guest\DramasController@addkr');
+
+
   // 検索機能
   route::get('dramas/index', 'Guest\DramasController@index');
 

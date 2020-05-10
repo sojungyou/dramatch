@@ -14,10 +14,10 @@ class DramasController extends Controller
     {
         $cond_title = $request->cond_title;
         if ($cond_title != ' '){
-            $dramas = Drama::where('title', $cond_title)->get();
+            $dramas = Drama::where('title', 'like', '%'.$cond_title.'%')->get();
         }
         else {
-            $dramas = Drama::all();
+            $dramas = Drama::all()->sortByDesc('updated_at');
         }
         return view('member.index', ['dramas' => $dramas,'cond_title' => $cond_title]);
     }

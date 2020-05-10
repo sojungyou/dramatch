@@ -31,10 +31,26 @@ class DramasController extends Controller
     public function show($id)
     {
         $drama = Drama::find($id);
+        session(['drama_id' => $id]);
+        $id = session('drama_id');
+        
         return view('guest.show' , [
             'drama' => $drama , 'id' => $id
         ]);
     }
-    
+    public function adden()
+    {
+        $dramas = Drama::all();
+        return view('guest.mainen' , [
+            'dramas' => $dramas
+        ]);
+    }
+    public function addkr()
+    {
+        $dramas = Drama::all();
+        return view('guest.mainkr' , [
+            'dramas' => $dramas
+        ]);
+    }
 }
 

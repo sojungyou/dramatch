@@ -2,7 +2,7 @@
 @extends('layouts.main')
 @section('content')
 
-
+<title>Dramatch|ドラマレビューサイト</title>
 <main role="main">
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -16,9 +16,9 @@
           <img class="d-block w-100" src="https://i.gyazo.com/d541f82ec972feb8f504c0c952cc2efc.jpg" alt="First slide">
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>ゲスト用画面です</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ action('Guest\DramasController@index') }}" role="button">作品を探す</a></p>
+            <h1>ようこそ！DRAMATCHへ！</h1>
+            <p>ドラマッチは気になるドラマの作品情報をみたり、レビューがみれるサイトです！会員になると直接レビューを投稿することもできます！詳しくはこちらのDRAMATCHの楽しみ方をご覧ください</p>
+            <p><a class="btn btn-lg btn-danger" href="{{ action('Guest\GuestController@intro') }}" role="button">Dramatchの楽しみ方</a></p>
           </div>
         </div>
       </div>
@@ -26,19 +26,19 @@
           <img class="d-block w-100" src="https://i.gyazo.com/fd3c977c8f17c73e0ba6e68669165fec.jpg" alt="Second slide">
         <div class="container">
           <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            <h1>作品を検索してみよう！</h1>
+            <p>DRAMATCHでは今話題の作品から長く愛されている名作まで様々なドラマの情報を見ることができます！今気になる作品を検索してみませんか？</p>
+            <p><a class="btn btn-lg btn-danger" href="{{ action('Guest\DramasController@index') }}" role="button">作品を探す</a></p>
           </div>
         </div>
       </div>
       <div class="carousel-item">
-          <img class="d-block w-100" src="https://i.gyazo.com/3aa64c15013ee170338ef1157123d4da.jpg" alt="Third slide">
+          <img class="d-block w-100" src="https://i.gyazo.com/0e20213ce515616a5d500473650e2335.jpg" alt="Third slide">
       <div class="container">
           <div class="carousel-caption text-right">
-            <h1>One more for good measure.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            <h1>会員になるとさらに色んなことができる！</h1>
+            <p>会員登録をするとレビューの閲覧、レビュー投稿さらにコメントを残すことができます！ Dramatchのメンバーになってみませんか？</p>
+            <p><a class="btn btn-lg btn-danger" href="{{ url('/register') }}" role="button">会員登録する</a></p>
           </div>
         </div>
       </div>
@@ -61,16 +61,14 @@
     <div class="container ">
       <div class="row">
         @foreach($dramas as $drama)
-          <div class="col-md-4">
-          <div class="card mb-4 col shadow-sm">
+        <div class="col-md-4">
+          <div class="img-wrap">
           <a href="/dramas/{{ $drama->id }}">
-      
-            <img class="card-img-top" src="{{ $drama->image_path }}" alt="">
+            <img src="{{ $drama->image_path }}" alt="">
           </a>
-          <div class="card-body">
-              <p class="card-text">{{ $drama->title }}</p>
-            </div>
-          </div>
+          <div class="card-text">{{ $drama->title }} {{ $drama->subtitle }} </div>
+        </div>
+      
         </div>
         @endforeach
       </div>

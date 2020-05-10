@@ -18,14 +18,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/album.css') }}" rel="stylesheet">
     <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 </head>
 
 
 <header>
-<title>Dramatch|ドラマレビューサイト</title>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
-      <a class="navbar-brand" href="#">Dramatch</a>
+      <a class="navbar-brand" href="{{ url('/dramas') }}">Dramatch</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,13 +38,12 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
           
-          <!-- ログインいている時 -->
+          <!-- ログインしている時 -->
           @auth
-            <li><a class="nav-link" href="{{ url('member/dramas') }}">ホーム</li>
+            <li> <a class="nav-link" href="{{ url('member/dramas') }}">ホーム</li>
               <span class="sr-only">(current)</span>
             </a>
-            <li><a class="nav-link" href="{{ action('Member\DramasController@index') }}">作品一覧</li>
-            
+            <li> <a class="nav-link pr-4" href="{{ action('Member\DramasController@index') }}">作品検索 </li> </a> 
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
@@ -68,6 +69,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ action('Guest\GuestController@intro') }}">Dramatchの楽しみ方</a>     
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/dramas/en') }}"><img src="https://icon-library.net//images/icon-english/icon-english-17.jpg" width="30"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/dramas/kr') }}"><img src="https://i.gyazo.com/2323b0bcc975960e2f25fc488aa3b638.png" width="35"></a>    
+          </li>
           </li>
         </ul>
           @endif
@@ -77,18 +84,16 @@
     @endif
   </nav>
 </header>
-        
-
-
-
-
 
 <div>
     @yield('content')
     </div>
 
 
+<div class="footer">
+  <p class="copyright">  (C)2020 DRAMATCH </p>
 
+</div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
