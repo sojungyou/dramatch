@@ -30,7 +30,11 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
     <div class="container">
+    @auth
+      <a class="navbar-brand" href="{{ url('/member/dramas') }}">Dramatch</a>
+      @else
       <a class="navbar-brand" href="{{ url('/dramas') }}">Dramatch</a>
+    @endauth
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -67,6 +71,9 @@
             <li class="nav-item">
             @if (Route::has('register'))
               <a class="nav-link" href="{{ route('register') }}">新規登録</a>     
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ action('Guest\DramasController@index') }}">作品検索</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/dramas/en') }}"><img src="https://i.gyazo.com/68e9f64fb9a68263183783d8ca4fe164.png" width="35" height="25"></a>
