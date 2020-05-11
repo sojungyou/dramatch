@@ -1,4 +1,4 @@
-
+<!-- メイン画面英語版 -->
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -23,26 +23,27 @@
 
 
 <header>
-<title>Dramatch|Drama review site</title>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
-    <div class="container">
-      <a class="navbar-brand" href="{{ url('/dramas') }}">Dramatch</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      
+  <title>Dramatch|Drama review site</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url('/dramas') }}">Dramatch</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
       @if (Route::has('login'))
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-          
-          <!-- ログインしている時 -->
-          @auth
-            <li><a class="nav-link" href="{{ url('member/dramas') }}">Home</li>
+            <!-- ログインしている時 -->
+            @auth
+            <li>
+              <a class="nav-link" href="{{ url('member/dramas') }}">Home
               <span class="sr-only">(current)</span>
-            </a>
-            <li><a class="nav-link" href="{{ action('Member\DramasController@index') }}">Search</li></a>  
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="{{ action('Member\DramasController@index') }}">Search</a>
+            </li>  
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>
@@ -53,27 +54,22 @@
                   @csrf
                   </form>
                 </div>
-            </li>
-
-
-          <li class="nav-item">
-          <!-- ログインしていない時 -->
-          @else
-            <a class="nav-link" href="{{ route('login') }}">Login</a>
-          </li>
-          <li class="nav-item">
-          @if (Route::has('register'))
-            <a class="nav-link" href="{{ route('register') }}">Register</a>     
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ action('Guest\GuestController@intro') }}">How to enjoy Dramatch</a>     
+              </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ url('/dramas/') }}"><img src="https://i.gyazo.com/c6d11b806690fdb0ca4c1ae49f3eb878.png" width="30"></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('/dramas/kr') }}"><img src="https://i.gyazo.com/2323b0bcc975960e2f25fc488aa3b638.png" width="35"></a>    
-          </li>
-          </li>
+            <!-- ログインしていない時 -->
+            @else
+              <a class="nav-link" href="{{ route('login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+            @if (Route::has('register'))
+              <a class="nav-link" href="{{ route('register') }}">Register</a>     
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/dramas/') }}"><img src="https://i.gyazo.com/c6d11b806690fdb0ca4c1ae49f3eb878.png" width="30"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/dramas/kr') }}"><img src="https://i.gyazo.com/2323b0bcc975960e2f25fc488aa3b638.png" width="35"></a>    
+            </li>
           </li>
         </ul>
           @endif
@@ -98,8 +94,7 @@
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>WELCOME TO DRAMATCH!</h1>
-            <p>Dramatch provides information about a variety of dramas, allows users to view our member's reviews and, if you become a member yourself, will allow you to post your own review on our site! For more information, please click here! </p>
-            <p><a class="btn btn-lg btn-primary" href="{{ action('Guest\GuestController@intro') }}" role="button">How to enjoy Dramatch</a></p>
+              <p>Dramatch provides information about a variety of dramas, allows users to view our member's reviews and, if you become a member yourself, will allow you to post your own review on our site!</p>
           </div>
         </div>
       </div>
@@ -108,8 +103,8 @@
         <div class="container">
           <div class="carousel-caption">
             <h1>Let's search for a drama!</h1>
-            <p>You can search from new releases to classic masterpieces to find the drama that is right for you！Would you like to take a look？</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ action('Guest\DramasController@index') }}" role="button">Search Drama</a></p>
+              <p>You can search from new releases to classic masterpieces to find the drama that is right for you！Would you like to take a look？</p>
+              <p><a class="btn btn-lg btn-primary" href="{{ action('Guest\DramasController@index') }}" role="button">Search Drama</a></p>
           </div>
         </div>
       </div>
@@ -118,8 +113,8 @@
       <div class="container">
           <div class="carousel-caption text-right">
             <h1>Become a member! Unlock more functions for Dramatch!</h1>
-            <p>Please feel free to become a member. You will be able to view all reviews for every drama, post your own reviews, like other member's posts as well as comment!</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ url('/register') }}" role="button">Register</a></p>
+              <p>Please feel free to become a member. You will be able to view all reviews for every drama, post your own reviews, like other member's posts as well as comment!</p>
+              <p><a class="btn btn-lg btn-primary" href="{{ url('/register') }}" role="button">Register</a></p>
           </div>
         </div>
       </div>
@@ -133,23 +128,19 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  
 
-
-
-  <!-- Thumbnail一覧 -->
+  <!-- ドラマ一覧 -->
   <div class="album py-5 bg-light">
     <div class="container ">
       <div class="row">
         @foreach($dramas as $drama)
         <div class="col-md-4">
           <div class="img-wrap">
-          <a href="/dramas/{{ $drama->id }}">
-            <img src="{{ $drama->image_path }}" alt="">
-          </a>
+            <a href="/dramas/{{ $drama->id }}">
+            <img src="{{ $drama->image_path }}">
+            </a>
           <div class="card-text">{{ $drama->subtitle }} </div>
-        </div>
-      
+          </div>
         </div>
         @endforeach
       </div>

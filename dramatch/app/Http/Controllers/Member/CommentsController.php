@@ -13,6 +13,7 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, Comment::$rules);
+        
         $comment = new Comment;
         $form = $request->all();
         $comment->fill($form);
@@ -20,6 +21,6 @@ class CommentsController extends Controller
         $post = Post::find($request->post_id);
         return redirect()->route('member.show', ['id' => $post->drama_id]);
     }
-   
+
 }
 

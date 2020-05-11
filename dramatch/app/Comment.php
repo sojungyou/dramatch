@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = [
-    
-        'post_id',
-        'body'
-    ];
+    protected $guarded = array('id');
+
     public static $rules = array (
         'body' => 'required',
         'post_id' => 'required',

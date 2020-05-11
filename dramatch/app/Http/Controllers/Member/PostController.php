@@ -13,7 +13,6 @@ class PostController extends Controller
     
     public function create(Request $request)
     {
-    
         $id = $request->id;
         return view('member.posts.create' , ['drama_id' => $id]);
     }
@@ -36,8 +35,7 @@ class PostController extends Controller
         $post = Post::find($id);
     
         return view('member.posts.edit', [
-            'post' => $post,
-        ]);
+            'post' => $post,]);
     }
     
     public function update(Request $request)
@@ -49,6 +47,7 @@ class PostController extends Controller
     
         return redirect()->route('member.show', ['id' => $post->drama_id]);
     }
+
     public function destroy(Request $request)
     {
         
@@ -58,19 +57,10 @@ class PostController extends Controller
             $post->comments()->delete();
             $post->delete();
         });
-        return redirect()->route('member.show', ['id' => $drama_id]);
-        
+
+        return redirect()->route('member.show', ['id' => $drama_id]);   
     }
-    // public function search(Request $request)
-    // {
-    
-    //     $post = post::where('title', 'like',"%{$request->search}%");
-    //     $dramas = Drama::all();
-    //     return view('dramas.show' , [
-    //         'drama' => $drama
-    //     ]);
-    
-    // }
+
 }
 
 

@@ -17,8 +17,7 @@
         <div class="container">
           <div class="carousel-caption text-left">
             <h1>ようこそ！DRAMATCHへ！</h1>
-            <p>ドラマッチは気になるドラマの作品情報をみたり、レビューがみれるサイトです！会員になると直接レビューを投稿することもできます！詳しくはこちらのDRAMATCHの楽しみ方をご覧ください</p>
-            <p><a class="btn btn-lg btn-danger" href="{{ action('Guest\GuestController@intro') }}" role="button">Dramatchの楽しみ方</a></p>
+              <p>ドラマッチは気になるドラマの作品情報をみたり、レビューがみれるサイトです！会員になると直接レビューを投稿することもできます！</p>
           </div>
         </div>
       </div>
@@ -36,9 +35,9 @@
           <img class="d-block w-100" src="https://i.gyazo.com/0e20213ce515616a5d500473650e2335.jpg" alt="Third slide">
       <div class="container">
           <div class="carousel-caption text-right">
-            <h1>会員になるとさらに色んなことができる！</h1>
-            <p>会員登録をするとレビューの閲覧、レビュー投稿さらにコメントを残すことができます！ Dramatchのメンバーになってみませんか？</p>
-            <p><a class="btn btn-lg btn-danger" href="{{ url('/register') }}" role="button">会員登録する</a></p>
+              <h1>会員になるとさらに色んなことができる！</h1>
+                <p>会員登録をするとレビューの閲覧、レビュー投稿さらにコメントを残すことができます！ Dramatchのメンバーになってみませんか？</p>
+                <p><a class="btn btn-lg btn-danger" href="{{ url('/register') }}" role="button">会員登録する</a></p>
           </div>
         </div>
       </div>
@@ -52,23 +51,19 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  
 
-
-
-  <!-- Thumbnail一覧 -->
+<!-- ドラマ一覧 -->
   <div class="album py-5 bg-light">
     <div class="container ">
       <div class="row">
         @foreach($dramas as $drama)
         <div class="col-md-4">
           <div class="img-wrap">
-          <a href="/dramas/{{ $drama->id }}">
-            <img src="{{ $drama->image_path }}" alt="">
-          </a>
-          <div class="card-text">{{ $drama->title }} {{ $drama->subtitle }} </div>
-        </div>
-      
+            <a href="/dramas/{{ $drama->id }}">
+              <img src="{{ $drama->image_path }}">
+            </a>
+            <div class="card-text">{{ $drama->title }} {{ $drama->subtitle }} </div>
+          </div>
         </div>
         @endforeach
       </div>
@@ -78,6 +73,3 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

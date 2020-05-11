@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //メンバーになったらできる機能
 Route::group(['prefix' => 'member','middleware'=>'auth'],function(){ 
-  // ドラマッチの楽しみ方
-  route::get('dramas/intro', 'Member\DramasController@intro');
+  
   // ドラマ検索
   route::get('dramas/index', 'Member\DramasController@index');
   // レビュー投稿
@@ -42,19 +41,17 @@ Route::group(['prefix' => 'member','middleware'=>'auth'],function(){
 
 
   //ゲストができる機能
-  
-  // Dramatchの楽しみ方
-  route::get('dramas/intro', 'Guest\GuestController@intro');
+
   // メイン画面
   route::get('dramas', 'Guest\DramasController@add');
-  // メイン画面
+  // メイン画面英韓
   route::get('dramas/en', 'Guest\DramasController@adden');
   route::get('dramas/kr', 'Guest\DramasController@addkr');
 
 
   // 検索機能
   route::get('dramas/index', 'Guest\DramasController@index');
-
+  // 各ドラマのレビュー詳細
   route::get('dramas/{id}', 'Guest\DramasController@show');
   
   
@@ -67,18 +64,3 @@ Route::group(['prefix' => 'member','middleware'=>'auth'],function(){
   
   
   
-  // Route::get('/posts', 'PostController@index');
-  // Route::get('/', function () {
-    //     return view('welcome');
-    // });
-    
-    // Route::resource('dramas/posts', 'PostController');
-    // Route::resource('comments','CommentsController', ['only' => ['store']]);
-    // route::resource('dramas','DramasController', ['only' => ['index','show']]);
-    //いいね機能
-    
-    // Route::group(['middleware'=>'auth'],function(){
-      
-    //   Route::get('favorite','FavoriteController@store')->name('favorites.favorite');
-    //   Route::get('unfavorite','FavoriteController@destroy')->name('favorites.unfavorite');
-    // });
